@@ -10,15 +10,13 @@ let officersList = [
 
 console.log(officersList);
 
-let officer = officersList.map((officer) => {
-    console.log(officer.id);
+let officer = officersList.map(officer => {
+  console.log(officer.id);
 });
 
-let officerName = officersList.map((officer) => officer.name);
+let officerName = officersList.map(officer => officer.name);
 
 console.log(`Officer Name: ${officerName}`);
-
-
 
 // Reduce Example
 let pilotList = [
@@ -49,20 +47,27 @@ let pilotList = [
   }
 ];
 
-let pilotNames = pilotList.map((pilot) => pilot.name);
+let pilotNames = pilotList.map(pilot => pilot.name);
 
 console.log(pilotNames);
 
 // Using Reduce (Calculate the yrs of exp)
 let pilotExp = pilotList.reduce((acc, pilot) => acc + pilot.years, 0);
-let totalExp = pilotList.reduce((acc, pilot) => acc + pilot.years, 0)
+let totalExp = pilotList.reduce((acc, pilot) => acc + pilot.years, 0);
 
 console.log(pilotExp);
 console.log(totalExp);
 
 // Calculate the Most Experience of Pilot
-let mostExp = pilotList.reduce((oldest, pilot) => (oldest.years || 0) > pilot.years ? oldest.years : pilot.years, {});
-let mostPilotExp = pilotList.reduce((oldest, pilot) => oldest.years > pilot.years ? oldest : pilot, {});
+let mostExp = pilotList.reduce(
+  (oldest, pilot) =>
+    (oldest.years || 0) > pilot.years ? oldest.years : pilot.years,
+  {}
+);
+let mostPilotExp = pilotList.reduce(
+  (oldest, pilot) => (oldest.years > pilot.years ? oldest : pilot),
+  {}
+);
 
 console.log(mostExp);
 console.log(mostPilotExp);
@@ -71,31 +76,31 @@ console.log(mostPilotExp);
 let pilotList = [
   {
     id: 2,
-    name: 'Wedge Antilles',
-    faction: 'Rebels',
+    name: "Wedge Antilles",
+    faction: "Rebels"
   },
   {
     id: 8,
-    name: 'Ciena Ree',
-    faction: 'Empire',
+    name: "Ciena Ree",
+    faction: "Empire"
   },
   {
     id: 40,
     name: "Iden Versio",
-    faction: 'Empire',
+    faction: "Empire"
   },
   {
     id: 66,
     name: "Thane Kyrell",
-    faction: 'Rebels',
+    faction: "Rebels"
   }
 ];
 
-let pilotsEmpire = pilotList.filter((pilot) => pilot.faction.includes('Empire'));
-let pilotsEmpire = pilotList.filter((pilot) => (pilot.faction === 'Empire'));
+let pilotsEmpire = pilotList.filter(pilot => pilot.faction.includes("Empire"));
+let pilotsEmpire = pilotList.filter(pilot => pilot.faction === "Empire");
 console.log(pilotsEmpire);
 
-let pilotsRebels = pilotList.filter((pilot) => pilot.faction.includes('Rebels'));
+let pilotsRebels = pilotList.filter(pilot => pilot.faction.includes("Rebels"));
 console.log(pilotsRebels);
 
 let personnelList = [
@@ -137,21 +142,23 @@ let personnelList = [
 ];
 
 //   Map
-let personList = personnelList.map((person) => person);
+let personList = personnelList.map(person => person);
 console.log(personList);
 
-let jediList = personnelList.filter((person) => (person.isForceUser));
+let jediList = personnelList.filter(person => person.isForceUser);
 console.log(jediList);
 
-let jediListScore = jediList.map((jedi) => jedi.shootingScore + jedi.pilotingScore);
+let jediListScore = jediList.map(
+  jedi => jedi.shootingScore + jedi.pilotingScore
+);
 console.log(jediListScore);
 
-let jediTotalScore = jediListScore.reduce((total, jedi) => total+jedi, 0);
+let jediTotalScore = jediListScore.reduce((total, jedi) => total + jedi, 0);
 console.log(jediTotalScore);
 
 // Chaining the map, filter and reduce methods
 let jediTotalScore = personnelList
   .filter(person => person.isForceUser)
   .map(jedi => jedi.shootingScore + jedi.pilotingScore)
-  .reduce((total, jedi) => total+jedi, 0);
+  .reduce((total, jedi) => total + jedi, 0);
 console.log(jediTotalScore);
